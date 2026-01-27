@@ -1,4 +1,4 @@
-const TodoForm = ({ input, setInput, handleSubmit }: { input: string; setInput: any ; handleSubmit: () => void }) => {
+const TodoForm = ({ input, setInput, handleSubmit }: { input: string; setInput: any ; handleSubmit: (e: React.FormEvent) => void }) => {
     return (
         <form onSubmit={handleSubmit} className="todo-form">
             <input
