@@ -1,4 +1,4 @@
-const ToDoList = (todos) => {
+const ToDoList = ({todos}: {todos: string}) => {
     return (
         <p>{todos}</p>
 

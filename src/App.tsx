@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import './App.css';
 import TodoForm from './components/TodoForm';
-import ToDoList from './components/TodoList';
+import ToDoList from './components/ToDoList';
 
 function App() {
   const [input, setInput] = useState('');

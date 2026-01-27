@@ -4,6 +4,7 @@ const TodoForm = ({ input, setInput, handleSubmit }: { input: string; setInput: 
             <input
                 type="text"
                 value={input}
+                onChange={(e) => setInput(e.target.value)}
                 placeholder="add to do task"
                 className="todo-input"
             />
