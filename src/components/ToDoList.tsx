@@ -1,6 +1,13 @@
-const ToDoList = ({todos}: {todos: string}) => {
+import type { Todo } from "../App";
+
+const ToDoList = ({ todos }: { todos: Todo[] }) => {
     return (
-        <p>{todos}</p>
+        <ul>
+            {todos.map(todo => (
+                <li >{todo.text}</li>
+            ))}
+        </ul>
+
 
     )
 };

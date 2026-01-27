@@ -3,20 +3,28 @@ import './App.css';
 import TodoForm from './components/TodoForm';
 import ToDoList from './components/ToDoList';
 
+export interface Todo {
+  text: string;
+}
+
 function App() {
   const [input, setInput] = useState('');
-  const [todos, setTodos] = useState( "");
+  const [todos, setTodos] = useState<Todo[]>([]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setTodos(input);
+
+    todos.push({
+      text: input,
+    });
+
     setInput("");
   };
 
   return (
     <div className="app-container">
       <h1>My Todo List</h1>
-      <TodoForm input={input} setInput={setInput} handleSubmit={() => { handleSubmit }} />
+      <TodoForm input={input} setInput={setInput} handleSubmit={handleSubmit} />
       <ToDoList todos={todos} />
     </div>
   );
