@@ -1,4 +1,6 @@
-const TodoForm = ({ input, setInput, handleSubmit }: { input: string; setInput: any ; handleSubmit: (e: React.FormEvent) => void }) => {
+import { SubmitButton } from "./Buttons/SubmitButton";
+
+const TodoForm = ({ input, setInput, handleSubmit }: { input: string; setInput: any; handleSubmit: (e: React.FormEvent) => void }) => {
     return (
         <form onSubmit={handleSubmit} className="todo-form">
             <input
@@ -8,9 +10,7 @@ const TodoForm = ({ input, setInput, handleSubmit }: { input: string; setInput: 
                 placeholder="add to do task"
                 className="todo-input"
             />
-            <button type="submit" className="add-button">
-                Add to Todo
-            </button>
+            <SubmitButton buttonLabel="Add to Todo" className="add-button" />
         </form>
     )
 };
