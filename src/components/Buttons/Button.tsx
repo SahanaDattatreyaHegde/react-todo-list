@@ -1,6 +1,6 @@
-export const Button = ({ buttonLabel, className }: { buttonLabel: string, className?: string }) => {
+export const Button = ({ buttonLabel, className, clickHandler }: { buttonLabel: string, className?: string, clickHandler?: () => void }) => {
     return (
-        <button type="submit" className={className}>
+        <button className={className} onClick={clickHandler}>
             {buttonLabel}
         </button>
     )

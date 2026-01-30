@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import './App.css';
 import TodoForm from './components/TodoForm';
 import ToDoList from './components/ToDoList';
+import { Button } from './components/Buttons/Button';
 
 export interface Todo {
   id: number;
@@ -13,7 +14,7 @@ let todoId = 0;
 function App() {
   const [input, setInput] = useState('');
   const [todos, setTodos] = useState<Todo[]>([]);
-  const [doWarn, setWarningMessage] = useState("");
+  const [doWarn, setWarningMessage] = useState(""); 
 
   useEffect(() => {
     const savedItem = localStorage.getItem("todos");
@@ -40,6 +41,7 @@ function App() {
 
   };
 
+
   const handleToggle = (id: number) => {
     for (let i = 0; i < todos.length; i++) {
       if (todos[i].id === id) {
@@ -50,12 +52,37 @@ function App() {
     localStorage.setItem("todos", JSON.stringify(todos));
   };
 
+  const handleDelete = (id: number) => {
+
+    for (let i = 0; i < todos.length; i++) {
+      if (todos[i].id === id) {
+        todos.splice(i, 1);
+      }
+
+      setTodos([...todos]);
+      localStorage.setItem("todos", JSON.stringify(todos));
+    };
+  }
+
   return (
     <div className="app-container">
       <h1>My Todo List</h1>
       <TodoForm input={input} setInput={setInput} handleSubmit={handleSubmit} />
+
       {doWarn && <p style={{ color: "red" }}>{doWarn}</p>}
-      <ToDoList todos={todos} handleToggle={(id) => { handleToggle(id) }} />
+
+      <table style={{ border: '1px solid black', width: '100%', textAlign: 'center' }}>
+        <tbody>
+          {todos.map(todo => (
+            <tr key={todo.id}>
+              <ToDoList todo={todo} handleToggle={(id) => { handleToggle(id) }} />
+              <td>
+                <Button buttonLabel="Delete" clickHandler={() => { handleDelete(todo.id) }}></Button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 }
