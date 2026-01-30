@@ -13,6 +13,7 @@ let todoId = 0;
 function App() {
   const [input, setInput] = useState('');
   const [todos, setTodos] = useState<Todo[]>([]);
+  const [doWarn, setWarningMessage] = useState("");
 
   useEffect(() => {
     const savedItem = localStorage.getItem("todos");
@@ -23,7 +24,10 @@ function App() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-
+    if (input === "") {
+      setWarningMessage("Please add task");
+      return;
+    }
     todos.push({
       id: todoId,
       text: input,
@@ -32,6 +36,8 @@ function App() {
     todoId += 1;
     localStorage.setItem("todos", JSON.stringify(todos));
     setInput("");
+    setWarningMessage("");
+
   };
 
   const handleToggle = (id: number) => {
@@ -48,6 +54,7 @@ function App() {
     <div className="app-container">
       <h1>My Todo List</h1>
       <TodoForm input={input} setInput={setInput} handleSubmit={handleSubmit} />
+      {doWarn && <p style={{ color: "red" }}>{doWarn}</p>}
       <ToDoList todos={todos} handleToggle={(id) => { handleToggle(id) }} />
     </div>
   );
