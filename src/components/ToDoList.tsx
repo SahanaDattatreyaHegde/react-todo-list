@@ -1,4 +1,5 @@
 import type { Todo } from "../App";
+import { Button } from "./Buttons/Button";
 
 const ToDoList = ({ todos, handleToggle }: { todos: Todo[], handleToggle: (id: number) => void }) => {
     return (
@@ -6,7 +7,7 @@ const ToDoList = ({ todos, handleToggle }: { todos: Todo[], handleToggle: (id: n
             <tbody>
                 {todos.map(todo => (
                     <tr key={todo.id}>
-                        <td style={{padding: "20px" }}>
+                        <td style={{ padding: "20px" }}>
                             <input
                                 type="checkbox"
                                 checked={todo.isChecked || false}
@@ -16,8 +17,7 @@ const ToDoList = ({ todos, handleToggle }: { todos: Todo[], handleToggle: (id: n
                                 {todo.text}
                             </span>
                         </td>
-
-                        <td>delete</td>
+                        <Button buttonLabel="Delete"></Button>
                     </tr>
                 ))}
 
