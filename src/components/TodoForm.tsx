@@ -1,6 +1,12 @@
 import { Button } from "./Buttons/Button";
 
-const TodoForm = ({ input, setInput, handleSubmit }: { input: string; setInput: any; handleSubmit: (e: React.FormEvent) => void }) => {
+interface ToDoFormProps {
+    input: string,
+    setInput: any,
+    handleSubmit: (e: React.FormEvent) => void
+}
+
+const TodoForm = ({ input, setInput, handleSubmit }: ToDoFormProps) => {
     return (
         <form onSubmit={handleSubmit} className="todo-form">
             <input

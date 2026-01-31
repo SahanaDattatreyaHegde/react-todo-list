@@ -1,6 +1,11 @@
 import type { Todo } from "../App";
 
-const ToDoList = ({ todo, handleToggle }: { todo: Todo, handleToggle: (id: number) => void }) => {
+interface ToDoListProps {
+    todo: Todo,
+    handleToggle: (id: number) => void
+}
+
+const ToDoList = ({ todo, handleToggle }: ToDoListProps) => {
     return (
         <td style={{ padding: "20px" }}>
             <input
