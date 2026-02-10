@@ -10,7 +10,6 @@ export interface Todo {
   text: string;
   isChecked: boolean;
 }
-let todoId = 0;
 
 function App() {
   const [input, setInput] = useState('');
@@ -25,11 +24,11 @@ function App() {
       return;
     }
     todos.push({
-      id: todoId,
+      id: todos[todos.length-1].id + 1 ,
       text: input,
       isChecked: false
     });
-    todoId += 1;
+    // todoId += 1;
     setTodos([...todos]);
 
     // setTodos(todos);
@@ -58,14 +57,14 @@ function App() {
       }
 
       setTodos([...todos]);
-    // setTodos(todos);
+      // setTodos(todos);
 
     };
   }
 
   return (
     <div className="app-container">
-      {/* <h1>My Todo List</h1> */}
+      <h1>My Todo List</h1>
       <TodoForm input={input} setInput={setInput} handleSubmit={handleSubmit} />
 
       {doWarn && <p style={{ color: "red" }}>{doWarn}</p>}
