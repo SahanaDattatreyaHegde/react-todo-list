@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import './App.css';
 import TodoForm from './components/TodoForm';
 import { ListItemLayout } from './components/ListItemLayout';
+import useLocalStorage from './hooks/useLocalStorage';
+
 
 export interface Todo {
   id: number;
@@ -12,15 +14,9 @@ let todoId = 0;
 
 function App() {
   const [input, setInput] = useState('');
-  const [todos, setTodos] = useState<Todo[]>([]);
-  const [doWarn, setWarningMessage] = useState("");
+  const [todos, setTodos] = useLocalStorage<Todo[]>("todos", []);
 
-  useEffect(() => {
-    const savedItem = localStorage.getItem("todos");
-    if (savedItem) {
-      setTodos(JSON.parse(savedItem));
-    }
-  }, []);
+  const [doWarn, setWarningMessage] = useState("");
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -34,7 +30,9 @@ function App() {
       isChecked: false
     });
     todoId += 1;
-    localStorage.setItem("todos", JSON.stringify(todos));
+    setTodos([...todos]);
+
+    // setTodos(todos);
     setInput("");
     setWarningMessage("");
 
@@ -48,7 +46,8 @@ function App() {
       }
     }
     setTodos([...todos]);
-    localStorage.setItem("todos", JSON.stringify(todos));
+    // setTodos(todos);
+
   };
 
   const handleDelete = (id: number) => {
@@ -59,13 +58,14 @@ function App() {
       }
 
       setTodos([...todos]);
-      localStorage.setItem("todos", JSON.stringify(todos));
+    // setTodos(todos);
+
     };
   }
 
   return (
     <div className="app-container">
-      <h1>My Todo List</h1>
+      {/* <h1>My Todo List</h1> */}
       <TodoForm input={input} setInput={setInput} handleSubmit={handleSubmit} />
 
       {doWarn && <p style={{ color: "red" }}>{doWarn}</p>}
