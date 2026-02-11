@@ -1,8 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import './App.css';
 import TodoForm from './components/TodoForm';
 import { ListItemLayout } from './components/ListItemLayout';
 import useLocalStorage from './hooks/useLocalStorage';
+import gsap from 'gsap'; // <-- import GSAP
+import { useGSAP } from '@gsap/react';
 
 
 export interface Todo {
@@ -16,6 +18,14 @@ function App() {
   const [todos, setTodos] = useLocalStorage<Todo[]>("todos", []);
 
   const [doWarn, setWarningMessage] = useState("");
+
+  const container = useRef<HTMLDivElement>(null);
+
+  useGSAP(() => {
+    // gsap code here...
+    // gsap.to('.box', { rotation: 180 }); // <-- automatically reverted
+    gsap.to(".box", { x: 200 })
+  }, { scope: container }); // <-- scope for selector text (optional)
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -64,7 +74,10 @@ function App() {
 
   return (
     <div className="app-container">
-      <h1>My Todo List</h1>
+      <div ref={container} className="app">
+        {/* <div className="box">d,jfhsiudh</div> */}
+        <h1 className='box'>My Todo List</h1>
+      </div>
       <TodoForm input={input} setInput={setInput} handleSubmit={handleSubmit} />
 
       {doWarn && <p style={{ color: "red" }}>{doWarn}</p>}
