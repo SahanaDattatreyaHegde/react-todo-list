@@ -3,6 +3,7 @@ import './App.css';
 import TodoForm from './components/TodoForm';
 import { ListItemLayout } from './components/ListItemLayout';
 import useLocalStorage from './hooks/useLocalStorage';
+import FilterByPriority from './components/FilterByPriority';
 
 
 export interface Todo {
@@ -21,6 +22,7 @@ function App() {
 
   const [selectedPriority, setPriority] = useState("low");
 
+  const [filterBy, setFilterBy] = useState("all");
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -29,7 +31,7 @@ function App() {
       return;
     }
     todos.push({
-      id: todos[todos.length - 1].id + 1,
+      id: todos.length > 0 ? todos[todos.length - 1].id + 1 : 1,
       text: input,
       isChecked: false,
       taskPriority: selectedPriority,
@@ -41,7 +43,7 @@ function App() {
     // setTodos(todos);
     setInput("");
     setWarningMessage("");
-    setPriority(selectedPriority);;
+    setPriority(selectedPriority);
   };
 
 
@@ -73,7 +75,7 @@ function App() {
     <div className="app-container">
       <h1>My Todo List</h1>
       <TodoForm
-        input={input} 
+        input={input}
         setInput={setInput}
         priority={selectedPriority}
         setSelectedPriority={setPriority}
@@ -82,7 +84,9 @@ function App() {
 
       {doWarn && <p style={{ color: "red" }}>{doWarn}</p>}
 
-      <ListItemLayout todos={todos} handleToggle={handleToggle} handleDelete={handleDelete} />
+      <FilterByPriority filterValue={filterBy} setFilter={setFilterBy}></FilterByPriority>
+
+      <ListItemLayout todos={todos} handleToggle={handleToggle} handleDelete={handleDelete} filterBy={filterBy} />
     </div>
   );
 }

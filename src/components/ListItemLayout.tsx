@@ -5,14 +5,19 @@ import ToDoList from "./ToDoList"
 interface ListItemLayoutProps {
     todos: Todo[],
     handleToggle: (id: number) => void,
-    handleDelete: (id: number) => void
+    handleDelete: (id: number) => void,
+    filterBy: string
 }
 
-export const ListItemLayout = ({ todos, handleToggle, handleDelete }: ListItemLayoutProps) => {
+export const ListItemLayout = ({ todos, handleToggle, handleDelete, filterBy }: ListItemLayoutProps) => {
+      const filteredTodos = filterBy === 'all' 
+    ? todos 
+    : todos.filter(todo => todo.taskPriority === filterBy);
+
     return (
         <table style={{ border: '1px solid black', width: '100%', textAlign: 'center' }}>
             <tbody>
-                {todos.map(todo => (
+                {filteredTodos.map(todo => (
                     <tr key={todo.id}>
                         <ToDoList todo={todo} handleToggle={(id) => { handleToggle(id) }} />
                         <td>

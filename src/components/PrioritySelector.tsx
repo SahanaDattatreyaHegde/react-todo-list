@@ -3,8 +3,9 @@ interface PrioritySelectorProps {
     setSelectedPriority: any
 }
 
+export const PRIORITYLIST = ["low", "medium", "high"];
+
 const PrioritySelector = ({ priority, setSelectedPriority }: PrioritySelectorProps) => {
-    const PRIORITYLIST = ["low", "medium", "high"];
 
     return (
 
