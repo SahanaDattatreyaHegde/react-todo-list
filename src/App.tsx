@@ -10,6 +10,7 @@ export interface Todo {
   text: string;
   isChecked: boolean;
   taskPriority: string;
+  taskDate: Date;
 }
 
 function App() {
@@ -31,7 +32,8 @@ function App() {
       id: todos[todos.length - 1].id + 1,
       text: input,
       isChecked: false,
-      taskPriority: selectedPriority
+      taskPriority: selectedPriority,
+      taskDate: new Date()
     });
     // todoId += 1;
     setTodos([...todos]);
