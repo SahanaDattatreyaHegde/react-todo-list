@@ -5,9 +5,15 @@ interface ToDoListProps {
     handleToggle: (id: number) => void
 }
 
+const colors = {
+    low: "green",
+    medium: "orange",
+    high: "red"
+}
+
 const ToDoList = ({ todo, handleToggle }: ToDoListProps) => {
     return (
-        <td style={{ padding: "20px" }}>
+        <td style={{ padding: "20px", display: "flex", gap: "20px" }}>
             <input
                 type="checkbox"
                 checked={todo.isChecked || false}
@@ -15,6 +21,12 @@ const ToDoList = ({ todo, handleToggle }: ToDoListProps) => {
             />
             <span style={{ marginLeft: "10px", textDecoration: todo.isChecked ? "line-through" : "none" }}>
                 {todo.text}
+            </span>
+            <span>
+                {todo.taskDate ? todo.taskDate.toLocaleDateString() : ""}
+            </span>
+            <span className="priority" style={{ color: colors[todo.taskPriority as keyof typeof colors] }}>
+                {todo.taskPriority}
             </span>
         </td>
     )

@@ -9,6 +9,8 @@ export interface Todo {
   id: number;
   text: string;
   isChecked: boolean;
+  taskPriority: string;
+  taskDate: Date;
 }
 
 function App() {
@@ -17,6 +19,9 @@ function App() {
 
   const [doWarn, setWarningMessage] = useState("");
 
+  const [selectedPriority, setPriority] = useState("low");
+
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (input === "") {
@@ -24,9 +29,11 @@ function App() {
       return;
     }
     todos.push({
-      id: todos[todos.length-1].id + 1 ,
+      id: todos[todos.length - 1].id + 1,
       text: input,
-      isChecked: false
+      isChecked: false,
+      taskPriority: selectedPriority,
+      taskDate: new Date()
     });
     // todoId += 1;
     setTodos([...todos]);
@@ -34,7 +41,7 @@ function App() {
     // setTodos(todos);
     setInput("");
     setWarningMessage("");
-
+    setPriority(selectedPriority);;
   };
 
 
@@ -65,7 +72,13 @@ function App() {
   return (
     <div className="app-container">
       <h1>My Todo List</h1>
-      <TodoForm input={input} setInput={setInput} handleSubmit={handleSubmit} />
+      <TodoForm
+        input={input} 
+        setInput={setInput}
+        priority={selectedPriority}
+        setSelectedPriority={setPriority}
+        handleSubmit={handleSubmit}
+      />
 
       {doWarn && <p style={{ color: "red" }}>{doWarn}</p>}
 
