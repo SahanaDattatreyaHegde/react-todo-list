@@ -16,6 +16,9 @@ const ToDoList = ({ todo, handleToggle }: ToDoListProps) => {
             <span style={{ marginLeft: "10px", textDecoration: todo.isChecked ? "line-through" : "none" }}>
                 {todo.text}
             </span>
+            <span className="priority">
+                {todo.taskPriority}
+            </span>
         </td>
     )
 };

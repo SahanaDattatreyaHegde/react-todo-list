@@ -1,12 +1,15 @@
 import { Button } from "./Buttons/Button";
+import PrioritySelector from "./PrioritySelector";
 
 interface ToDoFormProps {
     input: string,
     setInput: any,
+    priority: string,
+    setSelectedPriority: any,
     handleSubmit: (e: React.FormEvent) => void
 }
 
-const TodoForm = ({ input, setInput, handleSubmit }: ToDoFormProps) => {
+const TodoForm = ({ input, setInput, priority, setSelectedPriority, handleSubmit }: ToDoFormProps) => {
     return (
         <form onSubmit={handleSubmit} className="todo-form">
             <input
@@ -16,6 +19,9 @@ const TodoForm = ({ input, setInput, handleSubmit }: ToDoFormProps) => {
                 placeholder="add to do task"
                 className="todo-input"
             />
+            <PrioritySelector priority={priority} setSelectedPriority={setSelectedPriority}>
+
+            </PrioritySelector>
             <Button buttonLabel="Add to Todo" className="add-button" />
         </form>
     )
