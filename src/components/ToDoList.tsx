@@ -5,6 +5,12 @@ interface ToDoListProps {
     handleToggle: (id: number) => void
 }
 
+const colors = {
+    low: "green",
+    medium: "orange",
+    high: "red"
+}
+
 const ToDoList = ({ todo, handleToggle }: ToDoListProps) => {
     return (
         <td style={{ padding: "20px" }}>
@@ -16,7 +22,7 @@ const ToDoList = ({ todo, handleToggle }: ToDoListProps) => {
             <span style={{ marginLeft: "10px", textDecoration: todo.isChecked ? "line-through" : "none" }}>
                 {todo.text}
             </span>
-            <span className="priority">
+            <span className="priority" style={{ color: colors[todo.taskPriority as keyof typeof colors] }}>
                 {todo.taskPriority}
             </span>
         </td>
