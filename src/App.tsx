@@ -5,15 +5,6 @@ import { ListItemLayout } from './components/ListItemLayout';
 import useLocalStorage from './hooks/useLocalStorage';
 import FilterByPriority from './components/FilterByPriority';
 
-
-export interface Todo {
-  id: number;
-  text: string;
-  isChecked: boolean;
-  taskPriority: string;
-  taskDate: Date;
-}
-
 function App() {
   const [input, setInput] = useState('');
   const [todos, setTodos] = useLocalStorage<Todo[]>("todos", []);

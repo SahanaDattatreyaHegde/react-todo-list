@@ -1,9 +1,4 @@
-import { PRIORITYLIST } from "./PrioritySelector";
-
-interface FilterByPriorityProps {
-    filterValue: string,
-    setFilter: any
-}
+import { PRIORITYLIST } from "../enum/general";
 
 const FilterByPriority = ({ filterValue, setFilter }: FilterByPriorityProps) => {
     return (

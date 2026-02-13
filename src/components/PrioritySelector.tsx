@@ -1,9 +1,4 @@
-interface PrioritySelectorProps {
-    priority: string,
-    setSelectedPriority: any
-}
-
-export const PRIORITYLIST = ["low", "medium", "high"];
+import { PRIORITYLIST } from "../enum/general";
 
 const PrioritySelector = ({ priority, setSelectedPriority }: PrioritySelectorProps) => {
 
