@@ -23,7 +23,7 @@ const ToDoList = ({ todo, handleToggle }: ToDoListProps) => {
                 {todo.text}
             </span>
             <span>
-                {todo.taskDate ? todo.taskDate.toLocaleDateString() : ""}
+                {todo.taskDate ? new Date(todo.taskDate).toLocaleDateString() : ""}
             </span>
             <span className="priority" style={{ color: colors[todo.taskPriority as keyof typeof colors] }}>
                 {todo.taskPriority}
