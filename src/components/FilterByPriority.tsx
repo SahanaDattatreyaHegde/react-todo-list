@@ -1,10 +1,5 @@
 import { PRIORITYLIST } from "./PrioritySelector";
 
-interface FilterByPriorityProps {
-    filterValue: string,
-    setFilter: any
-}
-
 const FilterByPriority = ({ filterValue, setFilter }: FilterByPriorityProps) => {
     return (
         <div>

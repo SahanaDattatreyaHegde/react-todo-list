@@ -1,10 +1,3 @@
-import type { Todo } from "../App";
-
-interface ToDoListProps {
-    todo: Todo,
-    handleToggle: (id: number) => void
-}
-
 const colors = {
     low: "green",
     medium: "orange",

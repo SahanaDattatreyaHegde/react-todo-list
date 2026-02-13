@@ -1,14 +1,6 @@
 import { useMemo } from "react"
-import type { Todo } from "../App"
 import { Button } from "./Buttons/Button"
 import ToDoList from "./ToDoList"
-
-interface ListItemLayoutProps {
-    todos: Todo[],
-    handleToggle: (id: number) => void,
-    handleDelete: (id: number) => void,
-    filterBy: string
-}
 
 export const ListItemLayout = ({ todos, handleToggle, handleDelete, filterBy }: ListItemLayoutProps) => {
 

@@ -1,14 +1,6 @@
 import { Button } from "./Buttons/Button";
 import PrioritySelector from "./PrioritySelector";
 
-interface ToDoFormProps {
-    input: string,
-    setInput: any,
-    priority: string,
-    setSelectedPriority: any,
-    handleSubmit: (e: React.FormEvent) => void
-}
-
 const TodoForm = ({ input, setInput, priority, setSelectedPriority, handleSubmit }: ToDoFormProps) => {
     return (
         <form onSubmit={handleSubmit} className="todo-form">
