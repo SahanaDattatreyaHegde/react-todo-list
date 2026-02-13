@@ -1,8 +1,4 @@
-const colors = {
-    low: "green",
-    medium: "orange",
-    high: "red"
-}
+import { COLORS } from "../enum/general";
 
 const ToDoList = ({ todo, handleToggle }: ToDoListProps) => {
     return (
@@ -18,7 +14,7 @@ const ToDoList = ({ todo, handleToggle }: ToDoListProps) => {
             <span>
                 {todo.taskDate ? new Date(todo.taskDate).toLocaleDateString() : ""}
             </span>
-            <span className="priority" style={{ color: colors[todo.taskPriority as keyof typeof colors] }}>
+            <span className="priority" style={{ color: COLORS[todo.taskPriority as keyof typeof COLORS] }}>
                 {todo.taskPriority}
             </span>
         </td>

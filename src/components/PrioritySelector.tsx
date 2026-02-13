@@ -1,4 +1,4 @@
-export const PRIORITYLIST = ["low", "medium", "high"];
+import { PRIORITYLIST } from "../enum/general";
 
 const PrioritySelector = ({ priority, setSelectedPriority }: PrioritySelectorProps) => {
 
