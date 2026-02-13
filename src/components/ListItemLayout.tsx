@@ -1,3 +1,4 @@
+import { useMemo } from "react"
 import type { Todo } from "../App"
 import { Button } from "./Buttons/Button"
 import ToDoList from "./ToDoList"
@@ -10,9 +11,12 @@ interface ListItemLayoutProps {
 }
 
 export const ListItemLayout = ({ todos, handleToggle, handleDelete, filterBy }: ListItemLayoutProps) => {
-      const filteredTodos = filterBy === 'all' 
-    ? todos 
-    : todos.filter(todo => todo.taskPriority === filterBy);
+
+    const filteredTodos = useMemo(() => {
+        return filterBy === 'all'
+            ? todos
+            : todos.filter(todo => todo.taskPriority === filterBy);
+    }, [todos, filterBy]);
 
     return (
         <table style={{ border: '1px solid black', width: '100%', textAlign: 'center' }}>
