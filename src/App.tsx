@@ -24,8 +24,17 @@ function App() {
   useGSAP(() => {
     // gsap code here...
     // gsap.to('.box', { rotation: 180 }); // <-- automatically reverted
-    gsap.to(".box", { x: 200 })
-  }, { scope: container }); // <-- scope for selector text (optional)
+    //   gsap.to(".box", { x: 200 })
+    // }, { scope: container }); // <-- scope for selector text (optional)
+
+    gsap.from(".box", {
+      x: 500,
+      rotation: 360,
+      opacity: 0,
+      duration: 2,
+      delay: 1
+    })
+  });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
