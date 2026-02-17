@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import './App.css';
 import TodoForm from './components/TodoForm';
 import { ListItemLayout } from './components/ListItemLayout';
