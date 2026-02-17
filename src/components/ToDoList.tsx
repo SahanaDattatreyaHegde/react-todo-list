@@ -1,6 +1,8 @@
 import { COLORS } from "../enum/general";
 
-const ToDoList = ({ todo, handleToggle }: ToDoListProps) => {
+const ToDoList = (props: ToDoListProps) => {
+    const { todo, handleToggle } = props;
+
     return (
         <td style={{ padding: "20px", display: "flex", gap: "20px" }}>
             <input

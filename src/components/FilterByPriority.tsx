@@ -1,6 +1,8 @@
 import { PRIORITYLIST } from "../enum/general";
 
-const FilterByPriority = ({ filterValue, setFilter }: FilterByPriorityProps) => {
+const FilterByPriority = (props: FilterByPriorityProps) => {
+    const { filterValue, setFilter } = props;
+
     return (
         <div>
             <p>Filter By priority</p>
