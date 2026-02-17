@@ -2,7 +2,8 @@ import { useMemo } from "react"
 import { Button } from "./Buttons/Button"
 import ToDoList from "./ToDoList"
 
-export const ListItemLayout = ({ todos, handleToggle, handleDelete, filterBy }: ListItemLayoutProps) => {
+export const ListItemLayout = (props: ListItemLayoutProps) => {
+    const { todos, handleToggle, handleDelete, filterBy } = props;
 
     const filteredTodos = useMemo(() => {
         return filterBy === 'all'

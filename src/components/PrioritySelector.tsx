@@ -1,6 +1,7 @@
 import { PRIORITYLIST } from "../enum/general";
 
-const PrioritySelector = ({ priority, setSelectedPriority }: PrioritySelectorProps) => {
+const PrioritySelector = (props: PrioritySelectorProps) => {
+    const { priority, setSelectedPriority } = props;
 
     return (
 
